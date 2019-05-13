@@ -1,0 +1,53 @@
+---
+title: "documenting-R"
+author: "Kelly Sovacool"
+date: "5/10/2019"
+output: html_document
+---
+
+## Why document your code?
+
+Reproducibility
+
+FAIR data principles: findable, accessible, interopable, reusable
+
+## Ten simple rules
+
+Lee BD (2018) Ten simple rules for documenting scientific software. PLoS Comput Biol 14(12): e1006561. https://doi.org/10.1371/journal.pcbi.1006561
+
+1. Write comments as you code
+4. Include a README file with basic information
+6. Version control your documentation
+8. Use automated documentation tools
+9. Write error messages that provide solutions or point to your documentation
+
+## What to document
+
+"Document Design and Purpose, Not Mechanics"
+
+Try to write code that is self-documenting.
+This means using good, descriptive variable names and adhering to language-specific style guides.
+
+Wilson G, Aruliah DA, Brown CT, Chue Hong NP, Davis M, Guy RT, et al. (2014) Best Practices for Scientific Computing. PLoS Biol 12(1): e1001745. https://doi.org/10.1371/journal.pbio.1001745
+
+## How (specifics for R)
+
+### The bare minimum
+
+### Best practices
+roxygen
+
+## Activity
+
+Let's document the Riffomonas minimalR code:
+
+1. modules
+1. functions
+1. datasets
+
+### Instructions
+
+1. Clone this repo
+1. Checkout a new branch
+1. After modifying your part, commit your changes
+1. Push your changes
