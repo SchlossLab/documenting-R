@@ -1,10 +1,9 @@
-
 library(dplyr)
 library(readxl)
 
 get_metadata <- function() {
-    read_excel(
-        path = "raw_data/baxter.metadata.xlsx",
+    baxter_metadata <- read_excel(
+        path = "inst/extdata/baxter.metadata.xlsx",
         col_types = c(
             sample = "text",
             fit_result = "numeric",
@@ -25,19 +24,18 @@ get_metadata <- function() {
             stage = "text"
         )
     )
-    metadata[["Height"]] <- na_if(metadata[["Height"]], 0)
-    metadata[["Weight"]] <- na_if(metadata[["Weight"]], 0)
-    metadata[["Site"]] <-
-        recode(.x = metadata[["Site"]], "U of Michigan" = "U Michigan")
-    metadata[["Dx_Bin"]] <-
-        recode(.x = metadata[["Dx_Bin"]], "Cancer." = "Cancer")
-    metadata[["Gender"]] <- recode(.x = metadata[["Gender"]], "m" = "male")
-    metadata[["Gender"]] <-
-        recode(.x = metadata[["Gender"]], "f" = "female")
-
-    metadata <- rename_all(.tbl = metadata, .funs = tolower)
-    metadata <- rename(
-        .data = metadata,
+    baxter_metadata[["Height"]] <- na_if(baxter_metadata[["Height"]], 0)
+    baxter_metadata[["Weight"]] <- na_if(baxter_metadata[["Weight"]], 0)
+    baxter_metadata[["Site"]] <-
+        recode(.x = baxter_metadata[["Site"]], "U of Michigan" = "U Michigan")
+    baxter_metadata[["Dx_Bin"]] <-
+        recode(.x = baxter_metadata[["Dx_Bin"]], "Cancer." = "Cancer")
+    baxter_metadata[["Gender"]] <- recode(.x = baxter_metadata[["Gender"]], "m" = "male")
+    baxter_metadata[["Gender"]] <-
+        recode(.x = baxter_metadata[["Gender"]], "f" = "female")
+    baxter_metadata <- rename_all(.tbl = baxter_metadata, .funs = tolower)
+    baxter_metadata <- rename(
+        .data = baxter_metadata,
         previous_history = hx_prev,
         history_of_polyps = hx_of_polyps,
         family_history_of_crc = hx_fam_crc,
@@ -45,10 +43,9 @@ get_metadata <- function() {
         diagnosis = dx,
         sex = gender
     )
-
-    metadata <-
-        mutate(metadata, diagnosis = factor(diagnosis, levels = c("normal", "adenoma", "cancer")))
-    return(metadata)
+    baxter_metadata <-
+        mutate(baxter_metadata, diagnosis = factor(diagnosis, levels = c("normal", "adenoma", "cancer")))
+    return(baxter_metadata)
 }
 
 get_bmi <- function(weight_kg, height_cm){
