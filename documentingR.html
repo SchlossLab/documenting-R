@@ -3147,20 +3147,27 @@ slide:not(.current) .plotly.html-widget{
 <li><p>Don’t do this:</p>
 
 <pre class = 'prettyprint lang-r'>i &lt;- i + 1  # increment `i` by 1</pre></li>
+<li><p>Try to write code that is self-documenting.</p>
+
+<ul>
+<li>Use descriptive variable names. If you have to write a comment to describe your variable, you probably need to rename it. Examples:
+
+<ul>
+<li><code>counter</code> instead of <code>i</code></li>
+<li><code>patient_metadata</code> instead of <code>df</code></li>
+<li><code>data_cleaned</code> instead of <code>df2</code></li>
+</ul></li>
+</ul></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>What to document</h2></hgroup><article  id="what-to-document">
 
 <ul>
-<li>Try to write code that is self-documenting.
+<li>No code is fully self-documenting.</li>
+<li>You should document:
 
 <ul>
-<li>Use descriptive variable names.</li>
-</ul></li>
-<li>But no code is fully self-documenting. You should document:
-
-<ul>
-<li>modules</li>
+<li>packages</li>
 <li>datasets</li>
 <li>functions</li>
 <li>classes</li>
@@ -3168,30 +3175,106 @@ slide:not(.current) .plotly.html-widget{
 </ul></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>How (specifics for R)</h2></hgroup><article  id="how-specifics-for-r">
+</article></slide><slide class=""><hgroup><h2>How to document</h2></hgroup><article  id="how-to-document">
 
 <h3>The bare minimum:</h3>
 
 <p>Include a comment at the top of your R script to briefly describe what it does at a high level.</p>
 
-<pre >```r
-# Generate plots from mothur sensspec files for comparing clustering algorithms.
-```</pre>
+<pre class = 'prettyprint lang-r'># Generate plots from mothur sensspec files for comparing clustering algorithms.
+library(ggplot2)</pre>
+
+</article></slide><slide class=""><hgroup><h2>How (specifics for R)</h2></hgroup><article  id="how-specifics-for-r">
+
+<h3>Best practices:</h3>
+
+<ul>
+<li>For any project with R scripts:
+
+<ul>
+<li>Write comments alongside your code with <code>roxygen2</code> syntax.</li>
+<li>Make your project a package with <code>usethis</code> &amp; <code>devtools</code>.</li>
+</ul></li>
+<li>For packages you release into the wild:
+
+<ul>
+<li>Write a vignette with <code>R Markdown</code>.</li>
+<li>Create a website with <code>pkgdown</code>.</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2><code>roxygen2</code> syntax</h2></hgroup><article  id="roxygen2-syntax">
+
+<p><a href='http://r-pkgs.had.co.nz/man.html' title=''>Document functions</a> in <code>R/*.R</code> files</p>
+
+<pre class = 'prettyprint lang-r'>#&#39; Add together two numbers.
+#&#39; 
+#&#39; @param x A number.
+#&#39; @param y A number.
+#&#39; @return The sum of \code{x} and \code{y}.
+#&#39; @examples
+#&#39; add(1, 1)
+#&#39; add(10, 1)
+add &lt;- function(x, y) {
+   x + y
+}</pre>
+
+</article></slide><slide class=""><hgroup><h2><code>roxygen2</code> syntax</h2></hgroup><article  id="roxygen2-syntax-1">
+
+<p><a href='http://r-pkgs.had.co.nz/data.html' title=''>Document datasets</a> in <code>R/data.R</code></p>
+
+<pre class = 'prettyprint lang-r'>#&#39; Prices of 50,000 round cut diamonds.
+#&#39;
+#&#39; A dataset containing the prices and other attributes of almost 54,000
+#&#39; diamonds.
+#&#39;
+#&#39; @format A data frame with 53940 rows and 10 variables:
+#&#39; \describe{
+#&#39;   \item{price}{price, in US dollars}
+#&#39;   \item{carat}{weight of the diamond, in carats}
+#&#39;   ...
+#&#39; }
+#&#39; @source \url{http://www.diamondse.info/}
+&quot;diamonds&quot;</pre>
+
+</article></slide><slide class=""><hgroup><h2><code>roxygen2</code> syntax</h2></hgroup><article  id="roxygen2-syntax-2">
+
+<p><a href='http://r-pkgs.had.co.nz/man.html' title=''>Document the package</a> in <code>R/package_name.R</code></p>
+
+<pre class = 'prettyprint lang-r'>#&#39; foo: A package for computating the notorious bar statistic.
+#&#39;
+#&#39; The foo package provides three categories of important functions:
+#&#39; foo, bar and baz.
+#&#39; 
+#&#39; @section Foo functions:
+#&#39; The foo functions ...
+#&#39;
+#&#39; @docType package
+#&#39; @name foo
+NULL</pre>
 
 </article></slide><slide class=""><hgroup><h2>Activity</h2></hgroup><article  id="activity">
 
-<p>Let’s document the <a href='https://github.com/riffomonas/minimalR' title=''>Riffomonas minimalR</a> code:</p>
+<p>Let’s document code from the <a href='http://www.riffomonas.org/minimalR/06_line_plots.html' title=''>Riffomonas minimalR</a> tutorial!</p>
 
 <ol>
-<li>module</li>
-<li>dataset</li>
-<li>functions</li>
-<li>error message</li>
+<li>the package: edit <a href='R/minimalR.R' title=''>R/minimalR.R</a></li>
+<li>datasets: edit <a href='R/data.R' title=''>R/data.R</a>
+
+<ul>
+<li><code>baxter_metadata</code> (raw data is in <code>inst/extdata</code> &amp; processed data is in <code>data/</code>)</li>
+</ul></li>
+<li>functions: edit <a href='R/baxter.R' title=''>R/baxter.R</a>
+
+<ul>
+<li><code>get_metadata</code></li>
+<li><code>get_bmi</code></li>
+<li><code>get_bmi_category</code></li>
+<li><code>is_obese</code></li>
+</ul></li>
 </ol>
 
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
-
-<h3>Instructions</h3>
+</article></slide><slide class=""><hgroup><h2>Activity</h2></hgroup><article  id="activity-1">
 
 <ol>
 <li><p>Clone this repo</p>
@@ -3202,12 +3285,37 @@ slide:not(.current) .plotly.html-widget{
 <pre class = 'prettyprint lang-bash'>git checkout -b descriptive-branch-name</pre></li>
 <li><p>After modifying your part, commit your changes</p>
 
-<pre class = 'prettyprint lang-bash'>git add .
-git commit -m &quot;descriptive commit message&quot;</pre></li>
+<pre class = 'prettyprint lang-bash'>git add . ; git commit -m &quot;descriptive commit message&quot;</pre></li>
 <li><p>Push your changes</p>
 
 <pre class = 'prettyprint lang-bash'>git push -u origin descriptive-branch-name</pre></li>
-</ol></article></slide>
+<li><p>Open a pull request on GitHub to merge your branch into master</p></li>
+</ol>
+
+</article></slide><slide class=""><hgroup><h2>R Packages</h2></hgroup><article  id="r-packages">
+
+<p>Setup an R package</p>
+
+<pre class = 'prettyprint lang-r'>library(usethis)
+library(devtools)
+create_package(file.path(getwd()))</pre>
+
+<p>Specify dependencies</p>
+
+<pre class = 'prettyprint lang-r'>use_package(&quot;dplyr&quot;)
+use_package(&quot;readxl&quot;)</pre>
+
+<p>Compile documentation</p>
+
+<pre class = 'prettyprint lang-r'>devtools::document()</pre>
+
+</article></slide><slide class=""><hgroup><h2>Additional Reading</h2></hgroup><article  id="additional-reading">
+
+<ul>
+<li><a href='http://r-pkgs.had.co.nz/man.html' title=''>R Packages</a> - Hadley Wickham</li>
+<li><a href='https://pkgdown.r-lib.org/' title=''>pkgdown</a>: build a website for your R package</li>
+<li><a href='https://bookdown.org/rdpeng/RProgDA/documentation.html' title=''>Mastering Software Development in R</a> - Roger Peng, Sean Kross, &amp; Brooke Anderson</li>
+</ul></article></slide>
 
 
   <slide class="backdrop"></slide>

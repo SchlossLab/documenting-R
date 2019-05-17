@@ -6,7 +6,7 @@ output:
     ioslides_presentation:
         widescreen: true
 ---
-```{R setup, include=FALSE}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE)
 ```
 
@@ -31,62 +31,115 @@ knitr::opts_chunk$set(eval = FALSE)
 - "Document Design and Purpose, Not Mechanics" - [Wilson et al. 2014](Wilson G, Aruliah DA, Brown CT, Chue Hong NP, Davis M, Guy RT, et al. (2014) Best Practices for Scientific Computing. PLoS Biol 12(1): e1001745. https://doi.org/10.1371/journal.pbio.1001745)
 - In other words, "Why, not how".
 - Don't do this:
-    ```{R}
+    ```{r}
     i <- i + 1  # increment `i` by 1
     ```
 - Try to write code that is self-documenting.
-    - Use descriptive variable names.
+    - Use descriptive variable names. If you have to write a comment to describe your variable, you probably need to rename it. Examples:
+        - `counter` instead of `i`
+        - `patient_metadata` instead of `df`
+        - `data_cleaned` instead of `df2`
     
 ## What to document
 
 - No code is fully self-documenting. 
 - You should document:
-    - modules
+    - packages
     - datasets
     - functions
     - classes
     - any tricky lines of code
 
-## How (specifics for R)
+## How to document
 
 ### The bare minimum:
 
 Include a comment at the top of your R script to briefly describe what it does at a high level. 
 
-    ```{R}
-    # Generate plots from mothur sensspec files for comparing clustering algorithms.
-    ```
+```{r}
+# Generate plots from mothur sensspec files for comparing clustering algorithms.
+library(ggplot2)
+```
 
----
+## How (specifics for R)
 
 ### Best practices:
 
-For any project with R scripts:
+- For any project with R scripts:
     - Write comments alongside your code with `roxygen2` syntax.
     - Make your project a package with `usethis` & `devtools`.
-For packages you release into the wild:
+- For packages you release into the wild:
     - Write a vignette with `R Markdown`.
     - Create a website with `pkgdown`.
 
----
+## `roxygen2` syntax
+
+[Document functions](http://r-pkgs.had.co.nz/man.html) in `R/*.R` files
+```{r}
+#' Add together two numbers.
+#' 
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+add <- function(x, y) {
+   x + y
+}
+```
+
+## `roxygen2` syntax
+
+[Document datasets](http://r-pkgs.had.co.nz/data.html) in `R/data.R`
+```{r}
+#' Prices of 50,000 round cut diamonds.
+#'
+#' A dataset containing the prices and other attributes of almost 54,000
+#' diamonds.
+#'
+#' @format A data frame with 53940 rows and 10 variables:
+#' \describe{
+#'   \item{price}{price, in US dollars}
+#'   \item{carat}{weight of the diamond, in carats}
+#'   ...
+#' }
+#' @source \url{http://www.diamondse.info/}
+"diamonds"
+```
+
+## `roxygen2` syntax
+
+[Document the package](http://r-pkgs.had.co.nz/man.html) in `R/package_name.R`
+```{r}
+#' foo: A package for computating the notorious bar statistic.
+#'
+#' The foo package provides three categories of important functions:
+#' foo, bar and baz.
+#' 
+#' @section Foo functions:
+#' The foo functions ...
+#'
+#' @docType package
+#' @name foo
+NULL
+```
 
 ## Activity
 
-Let's document a script from the [Riffomonas minimalR](http://www.riffomonas.org/minimalR/06_line_plots.html) tutorial!
+Let's document code from the [Riffomonas minimalR](http://www.riffomonas.org/minimalR/06_line_plots.html) tutorial!
 
-1. module
-1. dataset
-    - `raw_data/baxter.metadata.xlsx`
-1. functions
+1. the package: edit [R/minimalR.R](R/minimalR.R)
+1. datasets: edit [R/data.R](R/data.R)
+    - `baxter_metadata` 
+    (raw data is in `inst/extdata` & processed data is in `data/`)
+1. functions: edit [R/baxter.R](R/baxter.R)
     - `get_metadata`
     - `get_bmi`
     - `get_bmi_category`
     - `is_obese`
-1. error message
 
----
-
-### Instructions
+## Activity
 
 1. Clone this repo
     ```{bash}
@@ -98,19 +151,32 @@ Let's document a script from the [Riffomonas minimalR](http://www.riffomonas.org
     ```
 1. After modifying your part, commit your changes
     ```{bash}
-    git add .
-    git commit -m "descriptive commit message"
+    git add . ; git commit -m "descriptive commit message"
     ```
 1. Push your changes
     ```{bash}
     git push -u origin descriptive-branch-name
     ```
+1. Open a pull request on GitHub to merge your branch into master
 
-## Demo 
+## R Packages 
 
-```{R}
+Setup an R package
+```{r}
 library(usethis)
-create_package(file.path(getwd()), 'documentingR')
+library(devtools)
+create_package(file.path(getwd()))
+```
+
+Specify dependencies
+```{r}
+use_package("dplyr")
+use_package("readxl")
+```
+
+Compile documentation
+```{r}
+devtools::document()
 ```
 
 ## Additional Reading
