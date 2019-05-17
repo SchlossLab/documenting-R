@@ -1,5 +1,5 @@
 
-library(tidyverse)
+library(dplyr)
 library(readxl)
 
 get_metadata <- function() {
@@ -34,7 +34,7 @@ get_metadata <- function() {
     metadata[["Gender"]] <- recode(.x = metadata[["Gender"]], "m" = "male")
     metadata[["Gender"]] <-
         recode(.x = metadata[["Gender"]], "f" = "female")
-    
+
     metadata <- rename_all(.tbl = metadata, .funs = tolower)
     metadata <- rename(
         .data = metadata,
@@ -45,7 +45,7 @@ get_metadata <- function() {
         diagnosis = dx,
         sex = gender
     )
-    
+
     metadata <-
         mutate(metadata, diagnosis = factor(diagnosis, levels = c("normal", "adenoma", "cancer")))
     return(metadata)
@@ -57,12 +57,12 @@ get_bmi <- function(weight_kg, height_cm){
 
 get_bmi_category <- function(weight_kg, height_cm){
     bmi <- get_bmi(weight_kg, height_cm)
-    
+
     bmi_cat <- case_when(bmi >= 30 ~ "obese",
                          bmi >= 25 ~ "overweight",
                          bmi >= 18.5 ~ "normal",
                          TRUE ~ "underweight")
-    
+
     return(bmi_cat)
 }
 
