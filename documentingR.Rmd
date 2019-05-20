@@ -66,7 +66,7 @@ library(ggplot2)
 ### Best practices:
 
 - For any project with R scripts:
-    - Write comments alongside your code with `roxygen2` syntax.
+    - Write comments alongside your code with `roxygen2` syntax for `man/` files.
     - Make your project a package with `usethis` & `devtools`.
 - For packages you release into the wild:
     - Write a vignette with `R Markdown`.
@@ -134,10 +134,8 @@ Let's document code from the [Riffomonas minimalR](http://www.riffomonas.org/min
     - `baxter_metadata` 
     (raw data is in `inst/extdata` & processed data is in `data/`)
 1. functions: edit [R/baxter.R](R/baxter.R)
-    - `get_metadata`
-    - `get_bmi`
-    - `get_bmi_category`
-    - `is_obese`
+    - `get_metadata` & `get_bmi`
+    - `get_bmi_category` & `is_obese`
 
 ## Activity
 
@@ -145,10 +143,18 @@ Let's document code from the [Riffomonas minimalR](http://www.riffomonas.org/min
     ```{bash}
     git clone https://github.com/SchlossLab/documenting-R
     ```
+    or if you previously cloned it, pull new commits:
+    ```{bash}
+    cd path/to/documenting-R/
+    git pull
+    ```
 1. Checkout a new branch
     ```{bash}
     git checkout -b descriptive-branch-name
     ```
+
+## Activity
+
 1. After modifying your part, commit your changes
     ```{bash}
     git add . ; git commit -m "descriptive commit message"
@@ -157,7 +163,8 @@ Let's document code from the [Riffomonas minimalR](http://www.riffomonas.org/min
     ```{bash}
     git push -u origin descriptive-branch-name
     ```
-1. Open a pull request on GitHub to merge your branch into master
+1. Open a pull request on GitHub to merge your branch into master. 
+    - Mention your issue number(s) in the description like `Resolves #issue_number`.
 
 ## R Packages 
 
