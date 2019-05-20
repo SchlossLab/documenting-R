@@ -1,6 +1,7 @@
 library(dplyr)
 library(readxl)
 
+#' this is poorly-written documentation for get_metadata
 get_metadata <- function() {
     baxter_metadata <- read_excel(
         path = "inst/extdata/baxter.metadata.xlsx",
