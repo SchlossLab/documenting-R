@@ -152,19 +152,21 @@ Let's document code from the [Riffomonas minimalR](http://www.riffomonas.org/min
     ```{bash}
     git checkout -b descriptive-branch-name
     ```
-
-## Activity
-
 1. After modifying your part, commit your changes
     ```{bash}
     git add . ; git commit -m "descriptive commit message"
     ```
+
+## Activity
+
 1. Push your changes
     ```{bash}
     git push -u origin descriptive-branch-name
     ```
+    
 1. Open a pull request on GitHub to merge your branch into master. 
-    - Mention your issue number(s) in the description like `Resolves #issue_number`.
+    Mention your issue number(s) & assign me to the PR.
+    ![new pull request](figures/new_PR.png){width=250px}
 
 ## R Packages 
 

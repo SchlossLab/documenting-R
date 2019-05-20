@@ -3192,7 +3192,7 @@ library(ggplot2)</pre>
 <li>For any project with R scripts:
 
 <ul>
-<li>Write comments alongside your code with <code>roxygen2</code> syntax.</li>
+<li>Write comments alongside your code with <code>roxygen2</code> syntax for <code>man/</code> files.</li>
 <li>Make your project a package with <code>usethis</code> &amp; <code>devtools</code>.</li>
 </ul></li>
 <li>For packages you release into the wild:
@@ -3267,10 +3267,8 @@ NULL</pre>
 <li>functions: edit <a href='R/baxter.R' title=''>R/baxter.R</a>
 
 <ul>
-<li><code>get_metadata</code></li>
-<li><code>get_bmi</code></li>
-<li><code>get_bmi_category</code></li>
-<li><code>is_obese</code></li>
+<li><code>get_metadata</code> &amp; <code>get_bmi</code></li>
+<li><code>get_bmi_category</code> &amp; <code>is_obese</code></li>
 </ul></li>
 </ol>
 
@@ -3279,7 +3277,12 @@ NULL</pre>
 <ol>
 <li><p>Clone this repo</p>
 
-<pre class = 'prettyprint lang-bash'>git clone https://github.com/SchlossLab/documenting-R</pre></li>
+<pre class = 'prettyprint lang-bash'>git clone https://github.com/SchlossLab/documenting-R</pre>
+
+<p>or if you previously cloned it, pull new commits:</p>
+
+<pre class = 'prettyprint lang-bash'>cd path/to/documenting-R/
+git pull</pre></li>
 <li><p>Checkout a new branch</p>
 
 <pre class = 'prettyprint lang-bash'>git checkout -b descriptive-branch-name</pre></li>
@@ -3289,7 +3292,14 @@ NULL</pre>
 <li><p>Push your changes</p>
 
 <pre class = 'prettyprint lang-bash'>git push -u origin descriptive-branch-name</pre></li>
-<li><p>Open a pull request on GitHub to merge your branch into master</p></li>
+</ol>
+
+</article></slide><slide class=""><hgroup><h2>Activity</h2></hgroup><article  id="activity-2">
+
+<ol>
+<li>Open a pull request on GitHub to merge your branch into master. <img width="250px" src='figures/new_PR.png' title=''/></li>
+<li>Mention your issue number(s) in the PR.</li>
+<li>Assign me to the PR.</li>
 </ol>
 
 </article></slide><slide class=""><hgroup><h2>R Packages</h2></hgroup><article  id="r-packages">
