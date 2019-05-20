@@ -166,7 +166,8 @@ Let's document code from the [Riffomonas minimalR](http://www.riffomonas.org/min
     
 1. Open a pull request on GitHub to merge your branch into master. 
     Mention your issue number(s) & assign me to the PR.
-    ![new pull request](figures/new_PR.png){width=250px}
+    
+    ![new P](figures/new_PR.png){height=275px} ![example PR](figures/example_PR.png){height=275px}
 
 ## R Packages 
 
