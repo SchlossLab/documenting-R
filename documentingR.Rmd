@@ -13,8 +13,10 @@ knitr::opts_chunk$set(eval = FALSE)
 ## Why document your code?
 
 - Reproducibility
-- FAIR data principles: findable, accessible, **interopable**, **reusable**
+- [FAIR](https://doi.org/10.1038/sdata.2016.18) data principles: findable, accessible, **interopable**, **reusable**
 - Make it usable for other scientists -- including future you!
+
+See papers listed at the [Riffomonas Tutorial](http://www.riffomonas.org/reproducible_research/) for further reading on reproducibility.
 
 ## Ten simple rules for documenting scientific software
 
@@ -28,7 +30,7 @@ knitr::opts_chunk$set(eval = FALSE)
 
 ## What not to document
 
-- "Document Design and Purpose, Not Mechanics" - [Wilson et al. 2014](Wilson G, Aruliah DA, Brown CT, Chue Hong NP, Davis M, Guy RT, et al. (2014) Best Practices for Scientific Computing. PLoS Biol 12(1): e1001745. https://doi.org/10.1371/journal.pbio.1001745)
+- "Document Design and Purpose, Not Mechanics" - [Wilson et al. 2014](https://doi.org/10.1371/journal.pbio.1001745)
 - In other words, "Why, not how".
 - Don't do this:
     ```{r}
@@ -74,7 +76,7 @@ library(ggplot2)
 
 ## `roxygen2` syntax
 
-[Document functions](http://r-pkgs.had.co.nz/man.html) in `R/*.R` files
+[Document functions](http://r-pkgs.had.co.nz/man.html#man-functions) in `R/*.R` files
 ```{r}
 #' Add together two numbers.
 #' 
@@ -91,7 +93,7 @@ add <- function(x, y) {
 
 ## `roxygen2` syntax
 
-[Document datasets](http://r-pkgs.had.co.nz/data.html) in `R/data.R`
+[Document datasets](http://r-pkgs.had.co.nz/data.html#documenting-data) in `R/data.R`
 ```{r}
 #' Prices of 50,000 round cut diamonds.
 #'
@@ -110,7 +112,7 @@ add <- function(x, y) {
 
 ## `roxygen2` syntax
 
-[Document the package](http://r-pkgs.had.co.nz/man.html) in `R/package_name.R`
+[Document the package](http://r-pkgs.had.co.nz/man.html#man-packages) in `R/package_name.R`
 ```{r}
 #' foo: A package for computating the notorious bar statistic.
 #'
@@ -129,13 +131,14 @@ NULL
 
 Let's document code from the [Riffomonas minimalR](http://www.riffomonas.org/minimalR/06_line_plots.html) tutorial!
 
-1. the package: edit [R/minimalR.R](R/minimalR.R)
-1. datasets: edit [R/data.R](R/data.R)
-    - `baxter_metadata` 
-    (raw data is in `inst/extdata` & processed data is in `data/`)
-1. functions: edit [R/baxter.R](R/baxter.R)
-    - `get_metadata` & `get_bmi`
-    - `get_bmi_category` & `is_obese`
+1. The package: `minimalR`. Edit [R/minimalR.R](R/minimalR.R).
+1. The dataset: `baxter_metadata`. Edit [R/data.R](R/data.R)
+    (raw data in `inst/extdata/`, processed data in `data/`)
+1. Functions: Edit [R/baxter.R](R/baxter.R)
+    + `get_metadata`
+    + `get_bmi`
+    + `get_bmi_category`
+    + `is_obese`
 
 ## Activity
 
@@ -145,8 +148,7 @@ Let's document code from the [Riffomonas minimalR](http://www.riffomonas.org/min
     ```
     or if you previously cloned it, pull new commits:
     ```{bash}
-    cd path/to/documenting-R/
-    git pull
+    cd path/to/documenting-R/ ; git pull
     ```
 1. Checkout a new branch
     ```{bash}
@@ -157,13 +159,12 @@ Let's document code from the [Riffomonas minimalR](http://www.riffomonas.org/min
     git add . ; git commit -m "descriptive commit message"
     ```
 
-## Activity
+## Activity Wrap-up
 
 1. Push your changes
     ```{bash}
     git push -u origin descriptive-branch-name
     ```
-    
 1. Open a pull request on GitHub to merge your branch into master. 
     Mention your issue number(s) & assign me to the PR.
     

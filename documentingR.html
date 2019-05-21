@@ -3123,9 +3123,11 @@ slide:not(.current) .plotly.html-widget{
 
 <ul>
 <li>Reproducibility</li>
-<li>FAIR data principles: findable, accessible, <strong>interopable</strong>, <strong>reusable</strong></li>
+<li><a href='https://doi.org/10.1038/sdata.2016.18' title=''>FAIR</a> data principles: findable, accessible, <strong>interopable</strong>, <strong>reusable</strong></li>
 <li>Make it usable for other scientists – including future you!</li>
 </ul>
+
+<p>See papers listed at the <a href='http://www.riffomonas.org/reproducible_research/' title=''>Riffomonas Tutorial</a> for further reading on reproducibility.</p>
 
 </article></slide><slide class=""><hgroup><h2>Ten simple rules for documenting scientific software</h2></hgroup><article  id="ten-simple-rules-for-documenting-scientific-software">
 
@@ -3142,7 +3144,7 @@ slide:not(.current) .plotly.html-widget{
 </article></slide><slide class=""><hgroup><h2>What not to document</h2></hgroup><article  id="what-not-to-document">
 
 <ul>
-<li><p>&ldquo;Document Design and Purpose, Not Mechanics&rdquo; - <a href='Wilson%20G,%20Aruliah%20DA,%20Brown%20CT,%20Chue%20Hong%20NP,%20Davis%20M,%20Guy%20RT,%20et%20al.%20(2014)%20Best%20Practices%20for%20Scientific%20Computing.%20PLoS%20Biol%2012(1):%20e1001745.%20https://doi.org/10.1371/journal.pbio.1001745' title=''>Wilson et al. 2014</a></p></li>
+<li><p>&ldquo;Document Design and Purpose, Not Mechanics&rdquo; - <a href='https://doi.org/10.1371/journal.pbio.1001745' title=''>Wilson et al. 2014</a></p></li>
 <li><p>In other words, &ldquo;Why, not how&rdquo;.</p></li>
 <li><p>Don’t do this:</p>
 
@@ -3205,7 +3207,7 @@ library(ggplot2)</pre>
 
 </article></slide><slide class=""><hgroup><h2><code>roxygen2</code> syntax</h2></hgroup><article  id="roxygen2-syntax">
 
-<p><a href='http://r-pkgs.had.co.nz/man.html' title=''>Document functions</a> in <code>R/*.R</code> files</p>
+<p><a href='http://r-pkgs.had.co.nz/man.html#man-functions' title=''>Document functions</a> in <code>R/*.R</code> files</p>
 
 <pre class = 'prettyprint lang-r'>#&#39; Add together two numbers.
 #&#39; 
@@ -3221,7 +3223,7 @@ add &lt;- function(x, y) {
 
 </article></slide><slide class=""><hgroup><h2><code>roxygen2</code> syntax</h2></hgroup><article  id="roxygen2-syntax-1">
 
-<p><a href='http://r-pkgs.had.co.nz/data.html' title=''>Document datasets</a> in <code>R/data.R</code></p>
+<p><a href='http://r-pkgs.had.co.nz/data.html#documenting-data' title=''>Document datasets</a> in <code>R/data.R</code></p>
 
 <pre class = 'prettyprint lang-r'>#&#39; Prices of 50,000 round cut diamonds.
 #&#39;
@@ -3239,7 +3241,7 @@ add &lt;- function(x, y) {
 
 </article></slide><slide class=""><hgroup><h2><code>roxygen2</code> syntax</h2></hgroup><article  id="roxygen2-syntax-2">
 
-<p><a href='http://r-pkgs.had.co.nz/man.html' title=''>Document the package</a> in <code>R/package_name.R</code></p>
+<p><a href='http://r-pkgs.had.co.nz/man.html#man-packages' title=''>Document the package</a> in <code>R/package_name.R</code></p>
 
 <pre class = 'prettyprint lang-r'>#&#39; foo: A package for computating the notorious bar statistic.
 #&#39;
@@ -3258,17 +3260,15 @@ NULL</pre>
 <p>Let’s document code from the <a href='http://www.riffomonas.org/minimalR/06_line_plots.html' title=''>Riffomonas minimalR</a> tutorial!</p>
 
 <ol>
-<li>the package: edit <a href='R/minimalR.R' title=''>R/minimalR.R</a></li>
-<li>datasets: edit <a href='R/data.R' title=''>R/data.R</a>
+<li>The package: <code>minimalR</code>. Edit <a href='R/minimalR.R' title=''>R/minimalR.R</a>.</li>
+<li>The dataset: <code>baxter_metadata</code>. Edit <a href='R/data.R' title=''>R/data.R</a> (raw data in <code>inst/extdata/</code>, processed data in <code>data/</code>)</li>
+<li>Functions: Edit <a href='R/baxter.R' title=''>R/baxter.R</a>
 
 <ul>
-<li><code>baxter_metadata</code> (raw data is in <code>inst/extdata</code> &amp; processed data is in <code>data/</code>)</li>
-</ul></li>
-<li>functions: edit <a href='R/baxter.R' title=''>R/baxter.R</a>
-
-<ul>
-<li><code>get_metadata</code> &amp; <code>get_bmi</code></li>
-<li><code>get_bmi_category</code> &amp; <code>is_obese</code></li>
+<li><code>get_metadata</code></li>
+<li><code>get_bmi</code></li>
+<li><code>get_bmi_category</code></li>
+<li><code>is_obese</code></li>
 </ul></li>
 </ol>
 
@@ -3281,8 +3281,7 @@ NULL</pre>
 
 <p>or if you previously cloned it, pull new commits:</p>
 
-<pre class = 'prettyprint lang-bash'>cd path/to/documenting-R/
-git pull</pre></li>
+<pre class = 'prettyprint lang-bash'>cd path/to/documenting-R/ ; git pull</pre></li>
 <li><p>Checkout a new branch</p>
 
 <pre class = 'prettyprint lang-bash'>git checkout -b descriptive-branch-name</pre></li>
@@ -3291,7 +3290,7 @@ git pull</pre></li>
 <pre class = 'prettyprint lang-bash'>git add . ; git commit -m &quot;descriptive commit message&quot;</pre></li>
 </ol>
 
-</article></slide><slide class=""><hgroup><h2>Activity</h2></hgroup><article  id="activity-2">
+</article></slide><slide class=""><hgroup><h2>Activity Wrap-up</h2></hgroup><article  id="activity-wrap-up">
 
 <ol>
 <li><p>Push your changes</p>
