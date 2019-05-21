@@ -49,9 +49,22 @@ get_metadata <- function() {
     return(baxter_metadata)
 }
 
+#' Returns an individuals body mass index, given metric units.
+#'
+#' The squared value of weight in kilograms
+#' divided by height in meters, which is 
+#' converted by dividing cm by 100.
+#'
+#' @param weight_kg Weight in kilograms, a number.
+#' @param height_cm Height in centimeters, a number.
+#' @return The BMI of a given individual, a number.
+#' @examples 
+#' get_bmi(80, 182)
+#' get_bmi(50, 160)
 get_bmi <- function(weight_kg, height_cm){
     return(weight_kg / (height_cm/100) ^ 2)
-}
+} #consider adding an error for 0 value entries to either param
+
 
 #' Determine BMI category from get_bmi function results
 #'
