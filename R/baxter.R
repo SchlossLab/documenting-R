@@ -73,6 +73,15 @@ get_bmi_category <- function(weight_kg, height_cm){
     return(bmi_cat)
 }
 
+#' Determining whether a patient is obese from get_bmi_category
+#'
+#' @param weight_kg patient weight in kilograms
+#' @param height_cm patient height in centimeters
+#' @return True or false for obesity
+#' @examples
+#' get_bmi_category(100, 200)
+#' get_bmi_category(50, 198)
+#' get_bmi_category(180, 150)
 is_obese <- function(weight_kg, height_cm){
     bmi_category <- get_bmi_category(weight_kg, height_cm)
     return(bmi_category == "obese")
