@@ -196,3 +196,7 @@ devtools::document()
 - [pkgdown](https://pkgdown.r-lib.org/): build a website for your R package
 - [Mastering Software Development in R](https://bookdown.org/rdpeng/RProgDA/documentation.html) - Roger Peng, Sean Kross, & Brooke Anderson
 
+```{r, echo=FALSE}
+library(rmarkdown)
+rmarkdown::render('documentingR.Rmd', output_file = 'docs/documentingR.html')
+```
